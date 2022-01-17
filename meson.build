@@ -33,6 +33,7 @@ dependencies += raylib_subproject.dependency('raylib')
 if host_machine.system() == 'windows'
   dependencies += [
     cc.find_library('winmm'),
+    raylib_subproject.dependency('glfw')
   ]
 elif host_machine.system() == 'darwin'
   # TODO
@@ -40,6 +41,7 @@ elif host_machine.system() == 'linux'
   dependencies += [
     cc.find_library('m'),
     cc.find_library('dl'),
+    raylib_subproject.dependency('glfw')
   ]
 elif host_machine.system() == 'emscripten'
   link_args += [
