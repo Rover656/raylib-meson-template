@@ -52,6 +52,13 @@ elif host_machine.system() == 'emscripten'
   name_suffix = 'html'
 endif
 
+# Asset directory
+if get_option('buildtype') == 'release' or host_machine.system() == 'emscripten'
+    add_project_arguments('-DASSETS_PATH="assets/"', language: ['c', 'cpp'])
+else
+    add_project_arguments('-DASSETS_PATH="' + meson.current_source_dir() / 'assets/' + '"', language: ['c', 'cpp'])
+endif
+
 # Project files
 inc_dir = include_directories(
   'src',
@@ -71,4 +78,3 @@ executable('raylib-meson',
   name_suffix: name_suffix,
   gui_app: get_option('buildtype') == 'release'
 )
-

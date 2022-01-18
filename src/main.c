@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "raylib.h"
 
 #ifdef __EMSCRIPTEN__
@@ -16,6 +20,8 @@ void frame() {
 
 int main(int argc, const char **argv) {
     InitWindow(800, 450, "Raylib + Meson + C/C++");
+    TraceLog(LOG_INFO, "Found asset path: %s", ASSETS_PATH);
+
 
     SetTargetFPS(60);
 
