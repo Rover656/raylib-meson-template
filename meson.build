@@ -47,6 +47,7 @@ elif host_machine.system() == 'emscripten'
   link_args += [
     '-s', 'ENVIRONMENT=web',
     '-s', 'USE_GLFW=3',
+    '--preload-file', meson.current_source_dir() / 'assets' + '@/assets',
   ]
   name_suffix = 'html'
 endif
@@ -68,5 +69,6 @@ executable('raylib-meson',
   include_directories: inc_dir,
   link_args: link_args,
   name_suffix: name_suffix,
+  gui_app: get_option('buildtype') == 'release'
 )
 
